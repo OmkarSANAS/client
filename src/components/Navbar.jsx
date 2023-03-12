@@ -14,8 +14,8 @@ const Navbar = () => {
 
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
-      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px]">
-        <input
+      <div className="lg:flex-1 flex flex-row max-w-[458px] py-1 pl-4 pr-2 h-[42px]">
+        {/* <input
           type="text"
           placeholder="Search for campaigns"
           className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
@@ -27,14 +27,17 @@ const Navbar = () => {
             alt="search"
             className="w-[15px] h-[15px] object-contain"
           />
-        </div>
+        </div> */}
+        <h4 className="py-2 pl-4 pr-2 text-white font-semibold text-[24px]">
+          {"{ "} Crowd Fund <span className="text-[#fa02b0]">Block</span> {" }"}
+        </h4>
       </div>
 
       <div className="sm:flex hidden flex-row justify-end gap-4">
         <CustomButton
           btnType="button"
           title={address ? "Create a campaign" : "Connect"}
-          styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
+          styles={address ? "bg-[#fa02b0]" : "bg-[#8c6dfd]"}
           handleClick={() => {
             if (address) navigate("create-campaign");
             else connect();
@@ -74,11 +77,11 @@ const Navbar = () => {
             !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
           } transition-all duration-700`}
         >
-          <ul className="mb-4">
+          <ul className="mb-4 ">
             {navlinks.map((link) => (
               <li
                 key={link.name}
-                className={`flex p-4 ${
+                className={`flex p-4 cursor-pointer ${
                   isActive === link.name && "bg-[#3a3a43]"
                 }`}
                 onClick={() => {
@@ -96,7 +99,9 @@ const Navbar = () => {
                 />
                 <p
                   className={`ml-[20px] font-epilogue font-semibold text-[14px] ${
-                    isActive === link.name ? "text-[#1dc071]" : "text-[#808191]"
+                    isActive === link.name
+                      ? "text-[#fa02b0] grayscale-[30%]"
+                      : "text-[#808191]"
                   }`}
                 >
                   {link.name}
