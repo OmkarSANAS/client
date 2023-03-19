@@ -157,12 +157,21 @@ const CampaignDetails = () => {
               </div>
 
               {state.owner !== address ? (
-                <CustomButton
-                  btnType="button"
-                  title="Fund Campaign"
-                  styles="w-full bg-[#8c6dfd]"
-                  handleClick={handleDonate}
-                />
+                calculateBarPercentage(state.target, state.amountCollected) !==
+                100 ? (
+                  <CustomButton
+                    btnType="button"
+                    title="Fund Campaign"
+                    styles="w-full bg-[#8c6dfd]"
+                    handleClick={handleDonate}
+                  />
+                ) : (
+                  <CustomButton
+                    btnType="button"
+                    title="Campaign Goal Reached"
+                    styles="w-full bg-[#8c6dfd]"
+                  />
+                )
               ) : (
                 <CustomButton
                   btnType="button"
